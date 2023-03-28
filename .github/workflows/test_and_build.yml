@@ -69,6 +69,7 @@ jobs:
          name: RunnableJar
         #From this path
          path: staging
+         
   # Deploy to GHCR
   push-image-gchr:
     needs: build
@@ -87,7 +88,7 @@ jobs:
         logout: true
     - name: 'Build the Docker Image'
       run: |
-        docker build . --tag ghcr.io/${{github.actor}}/devops-demo:latest
+        docker build . --tag ghcr.io/${{ github.actor }}/devops-demo:latest
         docker push ghcr.io/${{github.actor}}/devops-demo:latest
 
 
