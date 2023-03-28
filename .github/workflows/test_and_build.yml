@@ -75,6 +75,8 @@ jobs:
     needs: build
     name: Deploy Images to GHCR
     runs-on: ubuntu-latest
+    env:
+      USERNAME: ${{github.actor}}
     steps:
     - name: 'Checkout GitHub Action'
       uses: actions/checkout@v3
@@ -90,7 +92,7 @@ jobs:
         
     - name: 'Build the Docker Image'
       run: |
-        docker build . --tag ghcr.io/"${{github.actor}},,"/devops-demo:latest
+        docker build . --tag ghcr.io/${USERNAME,,}/devops-demo:latest
         docker push ghcr.io/${{github.actor}}/devops-demo:latest
 
 
