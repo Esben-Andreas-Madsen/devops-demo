@@ -2,10 +2,16 @@ package via.doc1.devopsdemo.model;
 
 import java.util.Objects;
 
-public class Task {
+@Entity(name="Task")
+@Table(name="task")
+public class Task{
+    @Id 
     private String id;
     private String name;
     private String description;
+    @ManyToOne(fetch=FetchType.LAZY)
+    private TeamMember teamMember;
+
 
     public Task() {
     }
